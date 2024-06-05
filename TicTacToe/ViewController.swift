@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     
     
+    
+    
 
     // this for top labael i add in story board
     @IBOutlet weak var turnLabel: UILabel!
