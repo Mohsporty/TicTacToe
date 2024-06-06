@@ -35,6 +35,9 @@ class ViewController: UIViewController {
     var board = [UIButton]()
     
     
+    var noughtsScore = 0
+    var crossesScore = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +60,16 @@ class ViewController: UIViewController {
     @IBAction func boardTapAction(_ sender: UIButton) {
         
         addToBoard(sender)
+        
+        if checkForVictory(CROSS){
+            crossesScore += 1
+            resultAlert(title: "Crosses Win!")
+            
+        }
+        if checkForVictory(NOUGHT){
+            noughtsScore += 1
+            resultAlert(title: "Noughts Win!")
+        }
         
         
         
@@ -119,6 +132,9 @@ class ViewController: UIViewController {
     
     
     func resultAlert(title : String)  {
+        
+        
+        let message = "\nNoughts " + String(noughtsScore) + "\n\nCrosses " + String(crossesScore)
         let ac = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "Reset", style: .default, handler: {(_) in
             self.restBoard()
